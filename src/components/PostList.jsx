@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 const PostList = ({ posts }) => {
   return (
-    <div className='mt-4 mx-auto max-w-4xl'>
+    <div className='mt-4 mx-auto max-w-[800px]'>
       {posts.map((post) => (
         <div key={post.id} className='mx-auto py-2 px-8'>
           <Link to={`/posts/${post.id}`} key={post.id}>
