@@ -1,7 +1,6 @@
 import React from 'react'
 import HTMLReactParser from 'html-react-parser'
 
-// デフォルトエクスポートじゃないので元ファイルの変数名に合わせないといけない。
 import { posts } from "data/posts"
 
 const PostList = () => {
@@ -14,7 +13,7 @@ const PostList = () => {
               <div className='text-sm'>{new Date(post.createdAt).toLocaleDateString()}</div>
               <div className='flex px-5'>
                 {post.categories.map((category) => (
-                  <div className='px-2 py-1.5 mx-1 border border-blue-500 rounded text-blue-500 text-xs'>{category}</div>
+                  <div key={category} className='px-2 py-1.5 mx-1 border border-blue-500 rounded text-blue-500 text-xs'>{category}</div>
                 ))}
               </div>
             </div>
