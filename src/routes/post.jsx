@@ -1,19 +1,20 @@
 import React from 'react'
+import useSWR from 'swr';
 import { useParams } from 'react-router-dom';
 import HTMLReactParser from 'html-react-parser'
-import useSWR from 'swr';
 
 import Error from 'components/Error';
 
 const fetcher = async (url) => {
   const response = await fetch(url);
-  const json = await response.json();
-  return json;
+  return await response.json();
 };
 
 const Post = () => {
   const params = useParams();
-  const { data, error } = useSWR(`https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts/${params.id}`, fetcher, { suspense: true });
+  const fetchUrl = `https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts/${params.id}`;
+  const { data, error } = useSWR(fetchUrl, fetcher, { suspense: true });
+
   if (error) {
     return <Error />
   }
