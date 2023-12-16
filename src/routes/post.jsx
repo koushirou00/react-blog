@@ -1,14 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import HTMLReactParser from 'html-react-parser'
 
-const Post = ({ posts }) => {
+import Loading from 'components/Loading';
+
+const Post = () => {
+  const [post, setPost] = useState(null);
   const params = useParams();
-  const post = posts[params.id - 1]
+
+  useEffect(() => {
+    try {
+      (async function () {
+        const fetchData = await fetch(`https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts/${params.id}`)
+        const json = await fetchData.json()
+        setPost(json.post);
+      })();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [params.id])
+
+  if (!post) return <Loading />
+
   return (
-    <div className='mt-11 mx-auto p-3 max-w-[800px]'>
+    <div className=' mt-11 mx-auto p-3 max-w-[800px]'>
       <div >
-        <img src="https://placehold.jp/800x400.png" alt="" />
+        <img src={post.thumbnailUrl} alt="" />
       </div>
       <div className='p-2'>
         <div className='flex justify-between mt-3'>

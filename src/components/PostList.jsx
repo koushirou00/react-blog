@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import HTMLReactParser from 'html-react-parser'
 import { Link } from "react-router-dom"
+import Loading from './Loading'
 
-const PostList = ({ posts }) => {
+const PostList = () => {
+  const [posts, setPosts] = useState(null)
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const fetchData = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts")
+        const json = await fetchData.json()
+        setPosts(json.posts)
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [])
+
+  if (!posts) return <Loading />
+
   return (
     <div className='mt-4 mx-auto max-w-[800px]'>
       {posts.map((post) => (
