@@ -1,13 +1,14 @@
 // /src/components/Textarea.jsx
-import React from 'react'
+import React, { forwardRef } from 'react'
 
-const Textarea = ({ id, register, errors }) => {
+
+const Textarea = forwardRef(({ ...props }, ref) => {
   return (
     <>
-      <textarea id={id} {...register(id)} rows={8} className="w-full border border-gray-300 rounded-lg p-4" />
-      {errors && <div className='text-sm text-red-700'>{errors.message}</div>}
+      <textarea {...props} ref={ref} rows={8} />
+      {props.error && <div className='text-sm text-red-700'>{props.error.message}</div>}
     </>
   )
-}
+});
 
 export default Textarea

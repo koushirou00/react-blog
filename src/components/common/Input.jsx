@@ -1,14 +1,14 @@
 // /src/components/Input.jsx
-import React from 'react'
+import React, { forwardRef } from 'react'
 
-const Input = ({ id, type, register, errors, className }) => {
+const Input = forwardRef(({ ...props }, ref) => {
   return (
     <>
-      <input type={type} id={id} {...register(id)} className={className || "border"} />
-      {errors && <div className='text-sm text-red-700'>{errors.message}</div>}
+      <input {...props} ref={ref} />
+      {props.error && <div className='text-sm text-red-700'>{props.error.message}</div>}
     </>
   );
-}
+})
 
 
 export default Input
