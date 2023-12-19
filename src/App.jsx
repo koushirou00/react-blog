@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from "components/Header";
 import PostList from "components/PostList";
 import Post from "routes/post"
+import Contact from 'routes/contact';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PostList />} />
         <Route path="/posts/:id" element={<Post />} />
+        <Route path='/contact' element={<Contact />} />
       </Routes>
     </div>
   );
