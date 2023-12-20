@@ -2,7 +2,9 @@
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+
+import { SubmitData } from 'types/formTypes';
 
 const schema = z.object({
   name: z.string().min(1, "お名前は必須です。").max(30, { message: 'お名前は30文字以内で入力してください。' }),
@@ -11,15 +13,15 @@ const schema = z.object({
 });
 
 const useContactForm = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<SubmitData>({
     resolver: zodResolver(schema),
     mode: 'onSubmit'
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: SubmitData) => {
     try {
       const requestURL = "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts";
-      const response = await axios.post(requestURL, {
+      const response: AxiosResponse = await axios.post(requestURL, {
         name: data.name,
         mail: data.email,
         message: data.textarea
@@ -30,9 +32,9 @@ const useContactForm = () => {
         reset();
       }
     } catch (error) {
-      console.log(error);
+        console.error(error)
+      }
     }
-  }
 
   return { 
     register,

@@ -58,12 +58,12 @@ const Contact = () => {
 
         <div className='flex justify-center mt-10'>
           <Button
-            label="送信"
+            text="送信"
             type="submit"
             className="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg mr-4"
           />
           <Button
-            label="クリア"
+            text="クリア"
             type="button"
             className="bg-gray-200 font-bold py-2 px-4 rounded-lg"
             onClick={() => reset()}
