@@ -4,10 +4,11 @@ import { Routes, Route } from 'react-router-dom';
 // コンポーネント
 import Header from "components/Header";
 import PostList from "components/PostList";
-import Post from "routes/post"
+import Post from "routes/post";
 import Contact from 'routes/contact';
 
-function App() {
+
+const App: React.FC = () => {
   return (
     <div className="text-gray-800 text-base">
       <Header />

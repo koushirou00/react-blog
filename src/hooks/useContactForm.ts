@@ -3,7 +3,6 @@ import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import axios, { AxiosResponse } from "axios";
-
 import { SubmitData } from 'types/formTypes';
 
 const schema = z.object({

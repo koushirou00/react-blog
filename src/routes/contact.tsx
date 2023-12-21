@@ -8,10 +8,12 @@ import Textarea from 'components/common/Textarea';
 import Button from 'components/common/Button';
 import Label from 'components/common/Label';
 
-const Contact = () => {
+const Contact: React.FC = () => {
 
   // onSubmit関数をuseContactFormから受け取る
   const { register, handleSubmit, reset, errors } = useContactForm();
+
+  
 
   return (
     <div className='max-w-[800px] mx-auto py-10'>
@@ -60,7 +62,7 @@ const Contact = () => {
           <Button
             text="送信"
             type="submit"
-            className="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg mr-4"
+            className="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg ml-52 mr-4"
           />
           <Button
             text="クリア"

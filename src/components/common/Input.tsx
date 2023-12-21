@@ -1,27 +1,21 @@
 import React, { forwardRef } from 'react';
-import { InputProps } from 'types/commonTypes';
+import { FieldError } from 'react-hook-form';
 
+type InputProps = React.ComponentProps<'input'> &{
+  error?: FieldError;
+};
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ 
-  id,
-  type, 
-  error, 
-  className, 
-  onBlur, 
-  onChange 
-}, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(({...props}, ref ) => {
   return (
     <>
       <input 
-        type={type} 
-        id={id} 
-        ref={ref} 
-        className={className} 
-        onChange={onChange} 
-        onBlur={onBlur}/>
-      {error && <div className='text-sm text-red-700'>{error.message}</div>}
+        {...props}
+        ref={ref}
+      />
+      {props.error && <div className='text-sm text-red-700'>{props.error.message}</div>}
     </>
   );
 });
 
 export default Input;
+

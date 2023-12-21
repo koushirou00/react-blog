@@ -1,25 +1,19 @@
-// /src/components/Textarea.jsx
 import React, { forwardRef } from 'react';
-import { TextareaProps } from 'types/commonTypes';
+import { FieldError } from 'react-hook-form';
 
-const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
-  id,
-  onChange,
-  onBlur,
-  error,
-  className
-}, ref) => {
+type TextareaProps = React.ComponentProps<'textarea'> & {
+  error?: FieldError;
+};
+
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({...props}, ref) => {
   return (
     <>
       <textarea
-        id={id}
-        onChange={onChange}
-        onBlur={onBlur}
         ref={ref}
-        className={className}
+        {...props}
         rows={8}
       />
-      {error && <div className='text-sm text-red-700'>{error.message}</div>}
+      {props.error && <div className='text-sm text-red-700'>{props.error.message}</div>}
     </>
   );
 });

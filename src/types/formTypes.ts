@@ -5,7 +5,3 @@ export type SubmitData = {
   name: string;
   textarea: string;
 }
-
-export type Response = {
-  status: number;
-}

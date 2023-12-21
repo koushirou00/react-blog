@@ -6,7 +6,7 @@ import { PostObj, FetchPostResponse } from "types/postTypes"
 
 import Loading from 'components/Loading';
 
-const Post = () => {
+const Post: React.FC = () => {
   const [post, setPost] = useState<PostObj | null>(null);
   const params = useParams<{ id: string }>();
 

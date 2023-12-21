@@ -6,8 +6,8 @@ import { PostObj, FetchPostsResponse } from 'types/postTypes'
 
 import Loading from './Loading'
 
-const PostList = () => {
-  const [posts, setPosts] = useState < PostObj[] | null > (null)
+const PostList: React.FC = () => {
+  const [posts, setPosts] = useState <PostObj[]> ([])
 
   useEffect(() => {
     (async function () {

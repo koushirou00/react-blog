@@ -1,6 +1,12 @@
 import React from 'react'
 
-const Label = ({ ...props }) => {
+type LabelProps = {
+  htmlFor: string;
+  className?: string;
+  text: string;
+}
+
+const Label = ({ ...props }:LabelProps) => {
   return (
     <label {...props} >{props.text}</label>
   )
