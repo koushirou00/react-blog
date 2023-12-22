@@ -12,7 +12,7 @@ const schema = z.object({
 });
 
 const useContactForm = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<SubmitData>({
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<SubmitData>({
     resolver: zodResolver(schema),
     mode: 'onSubmit'
   });
@@ -24,12 +24,13 @@ const useContactForm = () => {
         name: data.name,
         mail: data.email,
         message: data.textarea
-      })
+      });
       console.log(response);
       if (response.status === 200) {
         window.alert("送信しました");
         reset();
-      }
+      }  
+  
     } catch (error) {
         console.error(error)
       }
@@ -40,6 +41,7 @@ const useContactForm = () => {
     handleSubmit: handleSubmit(onSubmit),
     reset,
     errors,
+    isSubmitting
   };
 
 }

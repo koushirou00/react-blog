@@ -5,7 +5,7 @@ type ButtonProps = ComponentProps<'button'> & {
   text: string;
 }
 
-const Button: React.FC<ButtonProps> = ({...props}) => {
+const Button: React.FC<ButtonProps> = (props) => {
   return (
     <button {...props}>
       {props.text}

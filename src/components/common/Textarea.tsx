@@ -5,7 +5,7 @@ type TextareaProps = React.ComponentProps<'textarea'> & {
   error?: FieldError;
 };
 
-const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({...props}, ref) => {
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
   return (
     <>
       <textarea
