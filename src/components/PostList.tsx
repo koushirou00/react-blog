@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import HTMLReactParser from 'html-react-parser'
 import { Link } from "react-router-dom"
+
+import { PostObj, FetchPostsResponse } from 'types/postTypes'
+
 import Loading from './Loading'
 
-const PostList = () => {
-  const [posts, setPosts] = useState(null)
+const PostList: React.FC = () => {
+  const [posts, setPosts] = useState <PostObj[]> ([])
 
   useEffect(() => {
     (async function () {
       try {
         const fetchData = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts")
-        const json = await fetchData.json()
+        const json: FetchPostsResponse = await fetchData.json()
         setPosts(json.posts)
       } catch (error) {
         console.log(error);

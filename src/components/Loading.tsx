@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <div className="mt-40 md:mt-52 flex flex-col items-center justify-center py-12">
       <div className="animate-bounce">

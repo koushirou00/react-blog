@@ -8,10 +8,10 @@ import Textarea from 'components/common/Textarea';
 import Button from 'components/common/Button';
 import Label from 'components/common/Label';
 
-const Contact = () => {
+const Contact: React.FC = () => {
 
   // onSubmit関数をuseContactFormから受け取る
-  const { register, handleSubmit, reset, errors } = useContactForm();
+  const { register, handleSubmit, reset, errors, isSubmitting } = useContactForm();
 
   return (
     <div className='max-w-[800px] mx-auto py-10'>
@@ -24,6 +24,7 @@ const Contact = () => {
             <Input
               id="name"
               type="text"
+              disabled={isSubmitting}
               {...register("name")}
               error={errors.name}
               className="border border-gray-300 rounded-lg p-4 w-full"
@@ -37,6 +38,7 @@ const Contact = () => {
             <Input
               id="email"
               type="email"
+              disabled={isSubmitting}
               {...register("email")}
               error={errors.email}
               className="border border-gray-300 rounded-lg p-4 w-full"
@@ -49,6 +51,7 @@ const Contact = () => {
           <div className='w-full'>
             <Textarea
               id="textarea"
+              disabled={isSubmitting}
               {...register("textarea")}
               error={errors.textarea}
               className="w-full border border-gray-300 rounded-lg p-4"
@@ -58,15 +61,17 @@ const Contact = () => {
 
         <div className='flex justify-center mt-10'>
           <Button
-            label="送信"
+            text="送信"
             type="submit"
-            className="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg mr-4"
+            className="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg ml-52 mr-4"
+            disabled={isSubmitting}
           />
           <Button
-            label="クリア"
+            text="クリア"
             type="button"
             className="bg-gray-200 font-bold py-2 px-4 rounded-lg"
             onClick={() => reset()}
+            disabled={isSubmitting}
           />
         </div>
 
